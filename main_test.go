@@ -126,7 +126,7 @@ func (t *NetworkServiceManagerProxySuite) TestHealthCheck() {
 	healthClient := grpc_health_v1.NewHealthClient(healthCC)
 	healthResponse, err := healthClient.Check(ctx,
 		&grpc_health_v1.HealthCheckRequest{
-			Service: "networkservice.NetworkServiceServer",
+			Service: "networkservice.NetworkService",
 		},
 		grpc.WaitForReady(true),
 	)
@@ -135,7 +135,7 @@ func (t *NetworkServiceManagerProxySuite) TestHealthCheck() {
 	t.Equal(grpc_health_v1.HealthCheckResponse_SERVING, healthResponse.Status)
 	healthResponse, err = healthClient.Check(ctx,
 		&grpc_health_v1.HealthCheckRequest{
-			Service: "networkservice.NetworkServiceServer",
+			Service: "networkservice.NetworkService",
 		},
 		grpc.WaitForReady(true),
 	)
